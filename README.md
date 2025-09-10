@@ -48,9 +48,9 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 
 ### Set Path and Parameters
 
-For MATLAB GUI users, please refer to **Set Path and Parameters (with GUI interface)** to tune your parameters.
+For MATLAB GUI users, please refer to [Set Path and Parameters (with GUI interface)](#Set-Path-and-Parameters-(with-GUI-interface)) to tune your parameters.
 
-For remote users, please refer to **Set Path and Parameters (with parameter table)** to tune your parameters.
+For remote users, please refer to [Set Path and Parameters (with parameter table)](#Set-Path-and-Parameters-(with-parameter-table)) to tune your parameters.
 
 We provide [Examples](examples/README.md) of zebrafish embryo development data along with corresponding parameters, which users can directly download and run.
 
@@ -62,7 +62,7 @@ We provide [Examples](examples/README.md) of zebrafish embryo development data a
    On the *Import* page, you can set the path to load your dataset and output tracking results. You may also set the frame range you want to analyze.   
 
    
-   You may also import your .csv of parameters directly **if you have runned ITEC previously**. Click ‘I want to import parameters directly from a parameter file’ on the *import* page, and set the path to load the file. Path and parameters will be loaded automatically. Please refer to ***Set Path and Parameters (with parameter table)*** for their names in table.
+   You may also import your .csv of parameters directly **if you have runned ITEC previously**. Click ‘I want to import parameters directly from a parameter file’ on the *import* page, and set the path to load the file. Path and parameters will be loaded automatically. Please refer to [Set Path and Parameters (with parameter table)](#Set-Path-and-Parameters-(with-parameter-table)) for their names in table.
 
    <img width="504" height="378" alt="幻灯片1" src="https://github.com/user-attachments/assets/ba514c31-9d37-469e-8200-35ca6bbcd061" />
 
