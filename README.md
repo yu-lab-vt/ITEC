@@ -4,8 +4,8 @@
 * [Quickstart](#Quickstart)
 * [Getting started with ITEC](#Getting-started-with-ITEC)
     * [Input](#Input)
-    * [Set Path and Parameters (with UI interface)](#Set-Path-and-Parameters (with UI interface))
-    * [Set Path and Parameters (with parameter tables)](#Set-Path-and-Parameters (with parameter tables))
+    * [Set Path and Parameters (with UI interface)](#Set-Path-and-Parameters-with-UI-interface))
+    * [Set Path and Parameters (with parameter tables)](#Set-Path-and-Parameters-with-parameter-tables))
     * [Output](#Output)
 * [FAQ](#FAQ)
 
