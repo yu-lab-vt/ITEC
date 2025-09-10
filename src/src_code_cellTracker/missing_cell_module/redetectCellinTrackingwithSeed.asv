@@ -1,0 +1,104 @@
+function [comMaps, pseudo_seed_label] = redetectCellinTrackingwithSeed(...
+    movieInfo, refine_res, embryo_vid, thresholdMaps, parent_kid_vec, ...
+    eigMaps, frame, yxz, q, order_flag)
+% detect a missing cell given a seed region
+if nargin == 9
+    order_flag = true;
+end
+%% step1: get information
+if iscell(yxz) % we have multiple seeds
+    seed_yxz = cat(1, yxz{:});
+    pseudo_seed_label = zeros(numel(yxz), 1);
+    for i=1:numel(yxz)
+        pseudo_seed_label(i) = numel(movieInfo.voxIdx) + i;
+        refine_res{frame}(yxz{i}) = pseudo_seed_label(i);
+    end
+else
+    seed_yxz = yxz;
+    pseudo_seed_label = numel(movieInfo.voxIdx) + 1;
+    refine_res{frame}(seed_yxz) = pseudo_seed_label;
+end
+
+if isempty(seed_yxz)
+    comMaps.fmapComp = [];
+    return;
+end
+
+eig3d = eigMaps{frame}{2};
+if q.multi_frames_flag
+    vid = cell(3,1);
+    idMap = cell(3,1);
+    for j=frame-1:frame+1
+        tmp_idx = j-frame+2;
+        if j>0 && j<=numel(refine_res)
+            vid{tmp_idx} = embryo_vid{j};
+            idMap{tmp_idx} = refine_res{j};
+        end
+    end
+else
+    vid = embryo_vid{frame};
+    idMap = refine_res{frame};    
+end
+
+%% step2: get local area
+comMapsInit = get_local_area_Wei(vid, idMap, pseudo_seed_label(1), eig3d, seed_yxz, q.shift);
+
+if order_flag
+    %% case1-step3: refine the seed
+    parent_kid = parent_kid_vec(~isnan(parent_kid_vec));
+    parent_kid_frame = movieInfo.frames(parent_kid);
+    seg_threshold = zeros(size(parent_kid));
+    for i = 1:length(parent_kid)
+        seg_threshold(i) = thresholdMaps{parent_kid_frame(i)}(movieInfo.voxIdx{parent_kid(i)}(1));
+    end
+    seg_threshold = round(mean(seg_threshold));
+    comMapsInit2 = refine_seedregion(comMapsInit, seg_threshold, length(movieInfo.vox));
+    comMapsInit2.init_seed_map = comMapsInit.regComp;
+    
+    %% case1-step4: get accurate cell regions
+    if isempty(find(comMapsInit2.regComp,1))
+        comMaps.fmapComp = false(size(comMapsInit2.regComp));
+        return;
+    end
+    [newLabel, comMaps] = refineOneRegion_with_seed(pseudo_seed_label(1), comMapsInit2, q);
+    if isempty(find(newLabel,1))
+        comMaps.fmapComp = false(size(newLabel));
+        return;
+    end
+    
+    %% case1-step5: test if there are false positive cells
+    fg = newLabel;
+    bg = imdilate(newLabel, ones(5,5,3));
+    bg2 = imdilate(newLabel, ones(3,3,1));
+    bg(bg2~=0) = false;
+    vals = comMaps.vidComp(fg);
+    bg(comMaps.idComp > 0) = false;
+    
+    current_pixels = find(bg);
+    [~,~,Z] = ind2sub(size(bg), current_pixels);
+    z_slices = unique(Z);
+    for ii = 1:length(z_slices)
+        slice_tem = bg(:,:,z_slices(ii));
+        cc_z = bwconncomp(slice_tem, 4);        % 4-connectivity
+        for jj = 1:cc_z.NumObjects
+            if size(slice_tem(cc_z.PixelIdxList{jj})) <= 5
+                slice_tem(cc_z.PixelIdxList{jj}) = false;
+            end
+        end
+        bg(:,:,z_slices(ii)) = slice_tem;
+    end
+    
+    bg_vals = comMaps.vidComp(bg);
+    %z_score = (mean(vals) - mean(bg_vals))/std(bg_vals)*sqrt(length(vals));
+    z_threshold = -norminv(0.01/length(movieInfo.vox)); % FDR control
+    [mu, sigma] = orderstatistics_test(vals, bg_vals);
+    z_score = ((mean(vals)-mean(bg_vals))/std(bg_vals)-mu)/sigma;
+    
+    if z_score < z_threshold
+        comMaps.fmapComp = false(size(newLabel));
+        return;
+    end
+
+else
+    
+end
