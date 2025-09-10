@@ -52,7 +52,7 @@ For MATLAB GUI users, please refer to **Set Path and Parameters (with GUI interf
 
 For remote users, please refer to **Set Path and Parameters (with parameter table)** to tune your parameters.
 
-We provide [Examples](examples/Readme.md) of zebrafish embryo development data along with corresponding parameters, which users can directly download and run.
+We provide [Examples](examples/README.md) of zebrafish embryo development data along with corresponding parameters, which users can directly download and run.
 
 <details>
 <summary> Set Path and Parameters (with GUI interface) </summary>
