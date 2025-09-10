@@ -39,7 +39,7 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
 For MATLAB with a graphical user interface(GUI), run `ITEC.mlapp` under `.../ITEC-master/src/` directory with MATLAB to start the interface.
 
-For remote users, please first follow the guide in ***Set Path and Parameters*** to tune your parameters in `.../ITEC-master/src/params.csv`. Then run the `demo.m` using the following commands:
+For remote users, please first follow the guide in [Set Path and Parameters](#Set-Path-and-Parameters) to tune your parameters in `.../ITEC-master/src/params.csv`. Then run the `demo.m` using the following commands:
    
 ```
 cd YOUR_FOLDER/ITEC-master/src/ 
@@ -201,7 +201,7 @@ We provide [Examples](examples/README.md) of zebrafish embryo development data a
    2. TGMM format and accompanying h5/xml that can be directly opened by Mastodon (Fiji plugin for cell tracking analysis). An easy-to-use tutorial for Mastodon can be found in [Mastodon Usage](documents/Mastodon%20Usage.md).
 
 
-   You can find all of the output in your *result\_path*. If you are not satisfied with the results, you can adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us.
+   You can find all of the output in your *result\_path*. If you are not satisfied with the results, you can adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to [FAQ](#FAQ) or contact us.
 
 
 ## FAQ
