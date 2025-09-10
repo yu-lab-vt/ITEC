@@ -175,7 +175,7 @@ For remote users, you may also set those configurations in a CSV file directly. 
 
    <img width="590" height="435" alt="图片" src="https://github.com/user-attachments/assets/d80d99e9-82c3-4a32-ba15-b561e4618656" />
    
-### Start Tracking
+### 4. Start Tracking
 
    After you have set all the parameters, turn to the *Start Tracking* page. Click *save* button to save path and parameters above. Then click *Run* button to start ITEC!
 
