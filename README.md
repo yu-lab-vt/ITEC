@@ -8,6 +8,8 @@
     * [Set Path and Parameters (with parameter tables)](#Set-Path-and-Parameters-with-parameter-tables))
     * [Output](#Output)
 * [FAQ](#FAQ)
+* [Theory support](#Theory-support)
+* [Citing](#Citing)
 
 ## Overview
 
