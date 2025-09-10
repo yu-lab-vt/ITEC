@@ -1,13 +1,13 @@
 # Readme for ITEC
 
 
-# Overview
+## Overview
 
 ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated to assisting developmental biologists in achieving whole-embryo lineage reconstruction and facilitating new biological discoveries. We provide the source code in MATLAB version along with a detailed user manual for reference.
 
 
 
-# Quickstart
+## Quickstart
 
 Running ITEC involves the following steps:
 
@@ -45,7 +45,7 @@ Running ITEC involves the following steps:
 
 
 
-# MATLAB Installation
+## MATLAB Installation
 
 
    Please refer to the MATLAB official websites for [downloads](https://ww2.mathworks.cn/downloads/) and [installation guide](https://ww2.mathworks.cn/help/install/ug/install-products-with-internet-connection.html). Many schools and research institutions offer free MATLAB. For licensing issues with MATLAB, please consult your institution. Note that the toolboxes `Image Processing Toolbox` `Statistics and Machine Learning Toolbox` `Parallel Computing Toolbox` need to be installed during MATLAB installation.
@@ -92,9 +92,9 @@ Running ITEC involves the following steps:
 
 
 
-# Getting started with ITEC
+## Getting started with ITEC
 
-## Input
+### Input
 
    The typical input of ITEC contains the follows:
 
@@ -105,10 +105,10 @@ To input your dataset and set parameters, one way is to use the ITEC graphical i
 
 For remote users, you may also set those configurations in a CSV file directly. Templates of params.csv is available here(link!). After configuration, you can run the `demo.m` file with MATLAB to start the pipeline. Make sure your configuration file is named as params.csv under `.../ITEC-master/src/` directory.
 
-## Set Path and Parameters (with UI interface)
+### Set Path and Parameters (with UI interface)
 
 
-### 1. Import
+#### 1. Import
 
    On the *Import* page, you can set the path to load your dataset and output tracking results. You may also set the frame range you want to analyze.    
    
@@ -119,7 +119,7 @@ For remote users, you may also set those configurations in a CSV file directly. 
    <img width="538" height="225" alt="图片" src="https://github.com/user-attachments/assets/dc4bb42a-2575-40ce-b4c6-245b7f19ee10" />
 
 
-### 2. General Parameters
+#### 2. General Parameters
 
    ----------Resolution----------
 
@@ -145,7 +145,7 @@ For remote users, you may also set those configurations in a CSV file directly. 
 
    **Filter factor** : the standard deviation of the Gaussian filter used for smoothing. You can increase it to get more consistent segmentation. Usual range is [1, 5].
 
-### 3. Processing Parameters
+#### 3. Processing Parameters
 
    ----------Segmentation----------
 
@@ -175,16 +175,16 @@ For remote users, you may also set those configurations in a CSV file directly. 
 
    <img width="590" height="435" alt="图片" src="https://github.com/user-attachments/assets/d80d99e9-82c3-4a32-ba15-b561e4618656" />
    
-### 4. Start Tracking
+#### 4. Start Tracking
 
    After you have set all the parameters, turn to the *Start Tracking* page. Click *save* button to save path and parameters above. Then click *Run* button to start ITEC!
 
    <img width="603" height="435" alt="图片" src="https://github.com/user-attachments/assets/ec642505-31ff-4f24-9025-f0997f4ae4df" />
    
-## Set Path and Parameters (with parameter tables)
+### Set Path and Parameters (with parameter tables)
 
 
-## Check output and re-tune parameters
+### Check output and re-tune parameters
    The output of ITEC contains the follows: 
 
 1. A standard CSV file, which succinctly contains the unique ID, XYZ coordinates, frames, and the parent ID associated with the previous frame of all cells.
@@ -194,12 +194,12 @@ For remote users, you may also set those configurations in a CSV file directly. 
 You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at [github](https://github.com/yu-lab-vt/ITEC).
 
    
-# Examples
+## Examples
 
-# Mastodon usage
+## Mastodon usage
 
 
-### 1. Start Fiji/ImageJ and get Mastodon.
+#### 1. Start Fiji/ImageJ and get Mastodon.
    Start the updater.
 
    <img width="381" height="269" alt="图片" src="https://github.com/user-attachments/assets/b9b1095b-ac42-4bcc-bff2-0786a834e41c" />
@@ -208,7 +208,7 @@ You can find all of the output in your *result\_path*. If you are not satisfied 
 
    <img width="389" height="300" alt="图片" src="https://github.com/user-attachments/assets/2f1badf4-f8ff-4447-87ed-7e518e0475fe" />
    
-### 2. Launch Mastodon and import TGMM data set
+#### 2. Launch Mastodon and import TGMM data set
 
    Search for mastodon in the box once you have restarted Fiji.
 
@@ -222,7 +222,7 @@ You can find all of the output in your *result\_path*. If you are not satisfied 
 
    <img width="330" height="390" alt="图片" src="https://github.com/user-attachments/assets/9f0e4004-34cd-4e7e-b416-168a40ed2961" />
 
-### 3. View data through bdv, trackscheme and selection table.
+#### 3. View data through bdv, trackscheme and selection table.
 
    The bdv and trackscheme windows should be as follows. Use Ctrl+Shift+ScrollWheel to zoom in either window.
 
@@ -242,35 +242,35 @@ You can find all of the output in your *result\_path*. If you are not satisfied 
 
 
 
-# FAQ
+## FAQ
 
-### 1. I found a lot of cells over-segmented in the result. How can I tune the parameters?
+#### 1. I found a lot of cells over-segmented in the result. How can I tune the parameters?
 
    This problem may result from distinct noise or too intensive segmentation. Accordingly, you may tune up the Filter factor in *Smoothing* section, or the smFactor in *Segmentation* section.
 
-### 2. I found a lot of cells under-segmented in the result. How can I tune the parameters?
+#### 2. I found a lot of cells under-segmented in the result. How can I tune the parameters?
 
    In *Smoothing* section, make sure your Filter factor is not set too high as it may fuse cell boundaries. Also, you may tune down the smFactor in *Segmentation* section and see if it works.
 
-### 3. I want to track the cells within a certain size range. What should I do?
+#### 3. I want to track the cells within a certain size range. What should I do?
 
    In *Resolution* section, you can adjust the cell size parameters (max size & min size) to achieve that. The algorithm will exclude cells beyond that range. For example, if you do not want the small cells, you may tune up the min size a little bit to get rid of them.
 
-### 4. I found part of the detections that ITEC provided seem not to be true cells. How can I tune the parameters?
+#### 4. I found part of the detections that ITEC provided seem not to be true cells. How can I tune the parameters?
 
    Most of the time this situation results from a too-low Background intensity in *Grayscale* section. Try tune it up to a proper level to distinguish the cells. You may further check other *Grayscale* parameters if it does not work.
 
-### 5. I found many cells missing, or fragmented tracks. How can I tune the parameters?
+#### 5. I found many cells missing, or fragmented tracks. How can I tune the parameters?
 
    You may first check if your *Grayscale* parameters are set properly. As ITEC remaps the intensity based on upper/lower bounds during pre-processing, a smaller range is better to show the contrast in between. Also make sure the Background intensity is set appropriately within the bounds, not too high. 
 
    On top of that, you may tune up the curveThres a little bit in *advanced parameters for segmentation*. Framented track may also result from a low max distance setting in *advanced parameters for tracking*, with data of compromised time resolution.
 
-### 6. I found ITEC detected few/too many divisions. How can I tune the parameters?
+#### 6. I found ITEC detected few/too many divisions. How can I tune the parameters?
 
    Division detection is mainly controlled by the division factor in *Tracking* section. Try tune it up a bit to encourage more detections of divsion, and vice versa. If the time resolution of your data is compromised, you may tune up the max distance in *advanced parameters for tracking* to allow more vibrant transitions.
 
-### 7. I found ITEC takes a long time at every stage. Is there anything wrong?
+#### 7. I found ITEC takes a long time at every stage. Is there anything wrong?
 
    ITEC leverages parallel computing for acceleration, so make sure you have install the parallel computing toolbox on MATLAB before processing. Also, try to crop the raw data into ceratin region of interest before importing it into ITEC.
 
@@ -278,10 +278,10 @@ You can find all of the output in your *result\_path*. If you are not satisfied 
 
 
 
-# Theory Support
+## Theory Support
 
    Our paper can be found here(link!). If you have any questions about the method, please contact <yug@tsinghua.edu.cn>
 
 
 
-# Citing
+## Citing
