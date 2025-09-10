@@ -29,7 +29,7 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
    When downloading MATLAB, please include at least the following toolboxes: `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`. Or you may install those applications afterwards.
 
-   A download tutorial for MATLAB can be found in [MATLAB Installation.md](documents/MATLAB-Installation.md).
+   A download tutorial for MATLAB can be found in [MATLAB Installation.md](documents/MATLAB%20Installation.md).
 
 3. Data Preparation
 
@@ -203,7 +203,7 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
 
 * Visualization
 
-   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. An easy-to-use tutorial for Mastodon can be found in [Mastodon Usage.md](documents/Mastodon-Usage.md).
+   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. An easy-to-use tutorial for Mastodon can be found in [Mastodon Usage.md](documents/Mastodon%20Usage.md).
 
    
 
