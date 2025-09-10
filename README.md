@@ -21,7 +21,7 @@ Running ITEC involves the following steps:
 
 1. Modify the parameter table
 
-   This parameter table is in `.../ITEC-master/params.csv`, containing your input data path, output path, and other adjustable parameters with biological or data characteristic significance. Suggest reading ***Getting started with ITEC*** section first, and then fine-tuning the parameters based on your own data.
+   This parameter table is in `.../ITEC-master/params.csv`, containing your input data path, output result path, and other adjustable parameters with biological or data characteristic significance. Suggest reading ***Getting started with ITEC*** section first, and then fine-tuning the parameters based on your own data.
 
 1. Prepare your data
 
@@ -29,25 +29,26 @@ Running ITEC involves the following steps:
 
 1. Run the pipeline
 
-   For Linux users, the following command needs to be run:
+   For MATLAB with a visual interface, you can switch the current folder to `.../ITEC-master/src`, open `.../ITEC-master/src/demo.m` and click *run*.
+   
+   For MATLAB running via the command line, the following command needs to be run:
    
    ```
    cd YOUR_FOLDER/ITEC-master/src/ 
    nohup matlab -nodisplay -nosplash -nodesktop <demo.m >outinfo.txt &
    ```
-   For Windows, you can open `.../ITEC-master/src/demo.m` and click *run*.
+
 
 1. Visualization
 
-The results of ITEC are saved in the path you specified. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Fiji plugin Mastodon to visualize the tracking results. For a detailed format of the results, please refer to ***Getting started with ITEC***. An easy-to-use tutorial for Mastodon can be found in ***Mastodon Usage***.
+   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. For a detailed format of the results, please refer to ***Getting started with ITEC***. An easy-to-use tutorial for Mastodon can be found in ***Mastodon Usage***.
 
 
 
 # MATLAB Installation
 
-   Our code is based on MATLAB. Most schools and research institutions offer free MATLAB. For licensing issues with MATLAB, please consult your institution.
 
-   Please refer to the MATLAB official websites for [downloads](https://ww2.mathworks.cn/downloads/) and [installation guide](https://ww2.mathworks.cn/help/install/ug/install-products-with-internet-connection.html). Note that you may choose to install the toolboxes `Image Processing Toolbox` `Statistics and Machine Learning Toolbox` `Parallel Computing Toolbox` with MATLAB during installation, which are necessary for running ITEC.
+   Please refer to the MATLAB official websites for [downloads](https://ww2.mathworks.cn/downloads/) and [installation guide](https://ww2.mathworks.cn/help/install/ug/install-products-with-internet-connection.html). Many schools and research institutions offer free MATLAB. For licensing issues with MATLAB, please consult your institution. Note that the toolboxes `Image Processing Toolbox` `Statistics and Machine Learning Toolbox` `Parallel Computing Toolbox` need to be installed during MATLAB installation.
 
    **If you are using a server without a graphical interface**, you can install MATLAB as follows:
 
@@ -95,108 +96,105 @@ The results of ITEC are saved in the path you specified. The results include the
 
 ## Input
 
-   The typical imput of ITEC contains the follows:
+   The typical input of ITEC contains the follows:
 
-1. A 3D image set in TIFF format, with each frame stored as an independent .tif file. Please note that if your data is stored in z-slice units, you need to first store each frame's data in a .tif file before performing ITEC.
-1. Parameters which ITEC apply to run.
+1. A 3D+t image sequence in TIFF format, with each frame stored as an independent .tif file. 
+1. Cell tracking parameters related to your data. Please refer to the next section for the detailed meaning for parameters.
 
 To input your dataset and set parameters, one way is to use the ITEC graphical interface, which is guided in the next section of the tutorial. Run `ITEC.mlapp` with MATLAB to start the interface.
 
-For remote users, you may also set those configurations in a CSV file directly. Templates of params.csv is available here(link!). Please refer to the next section for the  detailed meaning for each parameter. After configuration, you can run the `demo.m` file with MATLAB to start the algorithm. Make sure your configuration file is named as params.csv under `.../ITEC-master/src/` directory.
+For remote users, you may also set those configurations in a CSV file directly. Templates of params.csv is available here(link!). After configuration, you can run the `demo.m` file with MATLAB to start the pipeline. Make sure your configuration file is named as params.csv under `.../ITEC-master/src/` directory.
 
-## Set Path and Parameters
+## Set Path and Parameters (with UI interface)
 
-   In the following, the corresponding name of variables in params.csv files are shown in italic in brackets.
 
-### 1. Import Settings
+### 1. Import
 
-   On the *Import* page of ITEC graphical interface, you can set the path to load your dataset and output results. You may also set your concerned frame range if necessary.
+   On the *Import* page, you can set the path to load your dataset and output tracking results. You may also set the frame range you want to analyze.    
+   
+   To import your .csv of parameters directly, click ‘I want to import parameters directly from a parameter file’ on the *import* page, and set the path to load the file. Path and parameters will be loaded automatically.
+
+   <img width="612" height="375" alt="图片" src="https://github.com/user-attachments/assets/6814b2ed-c3e4-421d-83d9-54dcf02c31f9" />
 
    <img width="538" height="225" alt="图片" src="https://github.com/user-attachments/assets/dc4bb42a-2575-40ce-b4c6-245b7f19ee10" />
 
-   Those settings above are named as (*data\_path*), (*result\_path*), (*start\_tm*)&(*end\_tm*) in the params.csv file.
 
-### 2. General parameters
+### 2. General Parameters
 
    ----------Resolution----------
 
-   **z-x/y ratio** (*z\_resolution*): the ratio of Z resolution OVER X/Y resolution. Z resolution refers to the distance between Z layers, in um typically. X/Y resolution refers to the real distance between neighbouring pixels. Your may derive the X/Y resolution by dividing the real length of the scope(1mm, e.g.) by the number of pixels along X direction(700, e.g.). The typical ratio should be no less than 1.
+   **z-x/y ratio** : the ratio of Z resolution OVER X/Y resolution. Z resolution refers to the distance between z-layers, and X/Y resolution refers to the distance between neighboring pixels. For example, if each pixel between x and y in a dataset represents 0.25 μm, and the distance between adjacent z-layers is 1 μm, then the z-x/y ratio should be set to 4. Most datasets are anisotropic, meaning the z-x/y ratio is usually greater than 1.
 
-   **Cell size** (*minSize*&*maxSize*): the area range of cells along xy plane, unit in pixels. The algorithm will not detect cells beyond that range, so generally a loose range is preferred.
+   **Cell size** : the volume range of cells, unit in voxels. The algorithm will not detect cells beyond that range, so generally a loose range is preferred.
 
-   **Downsampling ratio** (*xy\_downSampleScale*): the ratio of downsizing xy plane to speed up the processing. For example, a ratio of 2 will rescale a slice of 1920 \* 1080 to 960 \* 540. This ratio should be no more than z-x/y ratio to ensure detection performance.
+   **Downsampling ratio** : the ratio of downsizing xy plane to speed up the processing. For example, a ratio of 2 will rescale a slice of 1920 \* 1080 to 960 \* 540. This ratio should be no more than z-x/y ratio to ensure detection performance.
 
    <img width="535" height="339" alt="图片" src="https://github.com/user-attachments/assets/a1806715-8656-4906-99b6-9e885b547f75" />
 
    ----------Grayscale----------
 
-   **Intensity upper bound** (*scale\_term*): Pixels whose grayscale is above that bound will be set to that bound to ensure the contrast between pixels. You may use ImageJ to choose the upper quantile of the intensity as this bound.
+   **Intensity upper bound** : Pixels whose grayscale is above that bound will be set to that bound to ensure the contrast between pixels. We recommend choosing the upper intensity quantile of cells as this bound.
 
-   **Intensity lower bound** (*clipping*): Similar to the upper bound, the algorithm will reset pixels below that bound to 0 and further enhance contrast. For generally dark data, 0 should be fine, while it can be increased when the background noise is generally high.
+   **Intensity lower bound** : Similar to the upper bound, the algorithm will reset pixels below that bound to 0 and further enhance contrast. We recommend setting the lower intensity quantile of the background region as this bound.
 
-   **Background intensity** (*bgIntensity*): a general threshold of the grayscale of the background compared to the cells. Cells with intensity below that threshold won’t be detected. You may use ImageJ to help you set an approximate value.
+   **Background intensity** : a general threshold of the background grayscale. Cells with grayscale below the threshold won’t be detected.
 
    <img width="540" height="336" alt="图片" src="https://github.com/user-attachments/assets/b88192cf-86c0-49c7-9b8e-588d89303454" />
 
    ----------Smoothing----------
 
-   **Filter factor** (*filter\_sigma*): the intensity of the Gaussian filter used to highlight signals. You can increase it when background noise is high, or to get more conservative  segmentation. Usual range is [1, 5].
+   **Filter factor** : the standard deviation of the Gaussian filter used for smoothing. You can increase it to get more consistent segmentation. Usual range is [1, 5].
 
-### 3. Segmentation parameters
+### 3. Processing Parameters
 
-   **Save visualization results** (*visualization*): flags whether to save the visualized results. You may choose no to speed up the process.
+   ----------Segmentation----------
 
-   **smFactor** (*smFactor*): can increase it to prevent over-segmentation. Usual range is [0.3, 2].
+   **Save visualization results** : flags whether to save the visualization results. The segmentation result of each frame will be saved as a TIFF file. You may choose no to speed up the process.
 
-   ----------Advanced parameters----------
+   **smFactor** : can increase it to prevent over-segmentation. Usual range is [0.2, 2].
 
-   **curvesThres** (*curvesThres*): The threshold of detecting seeds for core regions, usually -5. Can be increased to up to -3 to encourage cellular core detection.
+   **curvesThres** : The threshold of detecting seeds for core regions, usually -5. If too many cells are detected, you should lower this value; if too few cells are detected, you should increase it (up to -3). 
 
-   **foreThres** (*foreThres*): The threshold of detecting boundaries, usually +3. Can be lowered to down to 1 to encourage boundary detection.
+   **foreThres** : The threshold of detecting boundaries, usually +3. Can be lowered to down to +1 to encourage boundary detection.
 
-   **Intensity difference** (*diffIntensity*): Usually 0. Can increase it to get better segmentation result given that the grayscale difference between the cells and background is distinct.
+   **Intensity difference** : Usually 0. Can increase it to get better segmentation result given that the grayscale difference between the cells and background is distinct.
 
    <img width="584" height="345" alt="图片" src="https://github.com/user-attachments/assets/e170bbf1-7346-4527-92a7-520d53fa8b2d" />
 
-### 4. Tracking parameters
+   ----------Tracking----------
 
-   **maxIter** (*maxIter*): The max number of iteration steps of error correction. Usually 3/4 is enough for convergence. Can increase it if results vary much with the iterations.
+   **maxIter** : The max number of iteration steps of error correction. Usually 3~5 is enough for convergence. Can increase it if results vary much with the iterations.
 
-   **division factor** (*division\_thres*): The intensity of detecting divisions. Can increase it to detect more divisions. Usual range is [0.9, 1].
+   **division factor** : The confidence level for division detection. Can increase it to detect more divisions. Usual range is [0.9, 1].
 
-   ----------Advanced parameters---------
+   **Save augmented seg. Results** : flags whether to save the segmentation results after error-correction-based tracking. Note that the error correction process may change the previous segmentation result to achieve better linkage.
 
-   **Save augmented seg. Results** (*saveAllResults*): flags whether to save the segmentation results after error-correction-based tracking. Note that the error correction process may change the previous segmentation result to achieve better linkage.
+   **Use motion flow estimation** : flags whether to apply motion flow methods during registration. The use of motion flow often achieves better results.
 
-   **Use motion flow estimation** (*useMotionFlow*): flags whether to apply motion flow methods during registration. The use of motion flow often achieves better results.
-
-   **Max distance** (*max\_dist*): a rough bound of the maximum displacement in pixels from frame t to t+1 (e.g. in division case, the displacement from the division spot to the location of a child in the next frame). It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable transitions.
+   **max distance** : a rough bound of the maximum displacement in pixels from frame t to t+1 (e.g. in division case, the displacement from the division spot to the location of a child in the next frame). It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable transitions.
 
    <img width="590" height="435" alt="图片" src="https://github.com/user-attachments/assets/d80d99e9-82c3-4a32-ba15-b561e4618656" />
    
-## Start tracking, check output and re-tune parameters
+### Start Tracking
 
-   After you have set all the parameters, turn to the *Start Tracking* page. Click *save parameters* button to save path and parameters above. Then click *run* button to start ITEC!
+   After you have set all the parameters, turn to the *Start Tracking* page. Click *save* button to save path and parameters above. Then click *Run* button to start ITEC!
 
    <img width="603" height="435" alt="图片" src="https://github.com/user-attachments/assets/ec642505-31ff-4f24-9025-f0997f4ae4df" />
+   
 
+## Check output and re-tune parameters
    The output of ITEC contains the follows: 
 
 1. A standard CSV file, which succinctly contains the unique ID, XYZ coordinates, frames, and the parent ID associated with the previous frame of all cells.
 
-1. Data that can be directly used for Mastodon visualization, including accompanying h5/xml and tgmm for recording tracking results. Regarding the use of Mastodon, you can refer to ***Mastodon usage***.
+1. TGMM format that can be directly opened by Mastodon, including accompanying h5/xml. Regarding the use of Mastodon, you can refer to ***Mastodon usage***.
 
-You can find all of the output in your output path. If you are not satisfied with the results, you may turn to the former page to adjust the parameters and run again. Should you have any difficulties tuning the parameters, please refer to ***FAQ*** using the link on the *Contact us* page or contact us at [github](https://github.com/yu-lab-vt/ITEC).
-
-## Import parameters directly next time (Optional)
-
-   To import your .csv of parameters directly, click ‘I want to import parameters directly from a parameter file’ on the *import* page, and set the path to load the file. Path and parameters on the pages will be loaded automatically.
-
-   <img width="612" height="375" alt="图片" src="https://github.com/user-attachments/assets/6814b2ed-c3e4-421d-83d9-54dcf02c31f9" />
+You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at [github](https://github.com/yu-lab-vt/ITEC).
+   
+# Examples
 
 # Mastodon usage
 
-   We have provided several examples for users to refer to. 
 
 ### 1. Start Fiji/ImageJ and get Mastodon.
    Start the updater.
@@ -243,11 +241,11 @@ You can find all of the output in your output path. If you are not satisfied wit
 
 # FAQ
 
-### 1. I found a lot of cells over-segmented in the result. How can I tune the params?
+### 1. I found a lot of cells over-segmented in the result. How can I tune the parameters?
 
    This problem may result from distinct noise or too intensive segmentation. Accordingly, you may tune up the Filter factor in *Smooting* section, or the smFactor  in *Segmentation* section.
 
-### 2. I found a lot of cells under-segmented in the result. How can I tune the params?
+### 2. I found a lot of cells under-segmented in the result. How can I tune the parameters?
 
    In *Smoothing* section, make sure your Filter factor is not set too high as it may fuse cell boundaries. Also, you may tune down the smFactor in *Segmentation* section and see if it works.
 
@@ -255,17 +253,17 @@ You can find all of the output in your output path. If you are not satisfied wit
 
    In *Resolution* section, you can adjust the cell size parameters (max size & min size) to achieve that. The algorithm will exclude cells beyond that range. For example, if you do not want the small cells, you may tune up the min size a little bit to get rid of them.
 
-### 4. I found part of the detections that ITEC provided seem not to be true cells. How can I tune the params?
+### 4. I found part of the detections that ITEC provided seem not to be true cells. How can I tune the parameters?
 
    Most of the time this situation results from a too-low Background intensity in *Grayscale* section. Try tune it up to a proper level to distinguish the cells. You may further check other *Grayscale* parameters if it does not work.
 
-### 5. I found many cells missing, or fragmented tracks. How can I tune the params?
+### 5. I found many cells missing, or fragmented tracks. How can I tune the parameters?
 
    You may first check if your *Grayscale* parameters are set properly. As ITEC remaps the intensity based on upper/lower bounds during pre-processing, a smaller range is better to show the contrast in between. Also make sure the Background intensity is set appropriately within the bounds, not too high. 
 
    On top of that, you may tune up the curveThres a little bit in *advanced parameters for segmentation*. Framented track may also result from a low Max distance setting in *advanced parameters for tracking*,with data of compromised time resolution.
 
-### 6. I found ITEC detected few/too many divisions. How can I tune the params?
+### 6. I found ITEC detected few/too many divisions. How can I tune the parameters?
 
    Division detection is mainly controlled by the division factor in *Tracking* section. Try tune it up a bit to encourage more detections of divsion, and vice versa. If the time resolution of your data is compromised, you may tune up the Max distance in *advanced parameters for tracking* to allow more vibrant transitions.
 
