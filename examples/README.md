@@ -1,6 +1,6 @@
 ## Examples
 
-Here, we provide two examples of ITEC cell tracking, including the raw data and parameter tables. Users can directly click to run and view the results.
+Here, we provide two examples of ITEC cell tracking, including the raw data and parameter tables. Users can directly run [demo_data1.m](demo_data1.m), [demo_data1.m](demo_data1.m), and view the results.
 
 The raw **data1** can be download from https://cloud.tsinghua.edu.cn/d/cbcb3d00ae5148c992d8/.
 
