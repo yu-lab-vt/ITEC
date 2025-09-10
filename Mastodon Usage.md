@@ -1,12 +1,13 @@
 ## Mastodon usage
 
-
+   Please refer to [Mastodon documentation](https://mastodon.readthedocs.io/en/latest/index.html) for more detailed instructions.
+   
 #### 1. Start Fiji/ImageJ and get Mastodon.
-   Start the updater.
+   Start the `Help`-`update`.
 
    <img width="381" height="269" alt="图片" src="https://github.com/user-attachments/assets/b9b1095b-ac42-4bcc-bff2-0786a834e41c" />
 
-   Click on the Manage update sites button, and search for Mastodon in the site management dialog. Select all the three sites by Mastodon. Then click Apply and Close and Apply Changes in turn. Restart ImageJ as guided.
+   Click on the `Manage update sites`, and search for Mastodon in the site management dialog. Select all the three sites by Mastodon. Then click `Apply and Close` and `Apply Changes` in turn. Restart ImageJ as guided.
 
    <img width="389" height="300" alt="图片" src="https://github.com/user-attachments/assets/2f1badf4-f8ff-4447-87ed-7e518e0475fe" />
    
@@ -40,7 +41,7 @@
 
    <img width="578" height="385" alt="图片" src="https://github.com/user-attachments/assets/2d07780b-3662-4e7e-b608-47454eff9779" />
    
-   Please refer to [Mastodon documentation](https://mastodon.readthedocs.io/en/latest/index.html) for advanced functions.
+
 
 
 
