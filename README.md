@@ -19,38 +19,40 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
 ### Preparation
 
-1. Code Download
+1. **Code Download**
 
    Download the full code of ITEC on github. Then unzip it to your working directory.
 
-2. MATLAB Installation
+2. **MATLAB Installation**
 
    Download the complete version of MATLAB (R2022b after is recommended)
 
-   When downloading MATLAB, please include at least the following toolboxes: `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`. Or you may install those applications afterwards.
+   When downloading MATLAB, please include at least the following toolboxes: `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`. You can also install these toolboxes afterwards.
 
-   A download tutorial for MATLAB can be found in [MATLAB Installation.md](documents/MATLAB%20Installation.md).
+   A download tutorial for MATLAB can be found in [MATLAB Installation](documents/MATLAB%20Installation.md).
 
-3. Data Preparation
+3. **Data Preparation**
 
    ITEC supports input in TIFF format, with each frame stored as an independent TIFF file.
 
-### Start ITEC Program
+### Start ITEC
 
 For MATLAB with a graphical user interface(GUI), run `ITEC.mlapp` under `.../ITEC-master/src/` directory with MATLAB to start the interface.
 
-For remote users, please first follow the guide in ***Set Path and Parameters*** to tune your parameters in `.../ITEC-master/src/params.csv`. then run the `demo.m` using the following commands:
+For remote users, please first follow the guide in ***Set Path and Parameters*** to tune your parameters in `.../ITEC-master/src/params.csv`. Then run the `demo.m` using the following commands:
    
 ```
 cd YOUR_FOLDER/ITEC-master/src/ 
-nohup matlab -nodisplay -nosplash -nodesktop <demo.m >outinfo.txt &
+nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 ```
 
 ### Set Path and Parameters
 
-For MATLAB GUI users, please view **Set Path and Parameters (with GUI interface)** to tune your parameters.
+For MATLAB GUI users, please refer to **Set Path and Parameters (with GUI interface)** to tune your parameters.
 
-For remote users, please unfold **Set Path and Parameters (with parameter table)**.
+For remote users, please refer to **Set Path and Parameters (with parameter table)** to tune your parameters.
+
+We provide [Examples](examples/Readme.md) of zebrafish embryo development data along with corresponding parameters, which users can directly download and run.
 
 <details>
 <summary> Set Path and Parameters (with GUI interface) </summary>
@@ -190,22 +192,17 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
 
 ### Outputs
 
-* ITEC Output
+* **ITEC Output and Visualization**
 
    The output of ITEC contains the follows: 
 
-   1. A standard CSV file, which succinctly contains the unique ID, XYZ coordinates, frames, and the parent ID associated with the previous frame of all cells.
+   1. A standard CSV file, which succinctly contains the unique ID, XYZ coordinates, frames, and parent-child relationships of all cells.
 
-   1. TGMM format that can be directly opened by Mastodon, including accompanying h5/xml. Regarding the use of Mastodon, you can refer to ***Mastodon usage***.
+   2. TGMM format and accompanying h5/xml that can be directly opened by Mastodon (Fiji plugin for cell tracking analysis). An easy-to-use tutorial for Mastodon can be found in [Mastodon Usage](documents/Mastodon%20Usage.md).
 
 
-   You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at github.
+   You can find all of the output in your *result\_path*. If you are not satisfied with the results, you can adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us.
 
-* Visualization
-
-   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. An easy-to-use tutorial for Mastodon can be found in [Mastodon Usage.md](documents/Mastodon%20Usage.md).
-
-   
 
 ## FAQ
 
@@ -245,7 +242,7 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
 
 ## Theory Support
 
-   Our paper can be found here(link!). If you have any questions about the method, please contact <yug@tsinghua.edu.cn>
+   Our paper can be found here. If you have any questions about the method, please contact <yug@tsinghua.edu.cn>
 
 
 
