@@ -59,12 +59,11 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
 
    On the *Import* page, you can set the path to load your dataset and output tracking results. You may also set the frame range you want to analyze.   
 
-   <img width="565" height="236" alt="图片" src="https://github.com/user-attachments/assets/dc4bb42a-2575-40ce-b4c6-245b7f19ee10" />
    
    You may also import your .csv of parameters directly **if you have runned ITEC previously**. Click ‘I want to import parameters directly from a parameter file’ on the *import* page, and set the path to load the file. Path and parameters will be loaded automatically. Please refer to ***Set Path and Parameters (with parameter table)*** for their names in table.
 
-   
-   <img width="490" height="300" alt="图片" src="https://github.com/user-attachments/assets/6814b2ed-c3e4-421d-83d9-54dcf02c31f9" />
+   <img width="504" height="378" alt="幻灯片1" src="https://github.com/user-attachments/assets/ba514c31-9d37-469e-8200-35ca6bbcd061" />
+
 
 #### 2. General Parameters
 
@@ -76,7 +75,6 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
 
    **Downsampling ratio** : the ratio of downsizing xy plane to speed up the processing. For example, a ratio of 2 will rescale a slice of 1920 \* 1080 to 960 \* 540. This ratio should be no more than z-x/y ratio to ensure detection performance.
 
-   <img width="535" height="339" alt="图片" src="https://github.com/user-attachments/assets/a1806715-8656-4906-99b6-9e885b547f75" />
 
    ----------Grayscale----------
 
@@ -86,11 +84,15 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
 
    **Background intensity** : a general threshold of the background grayscale. Cells with grayscale below the threshold won’t be detected.
 
-   <img width="540" height="336" alt="图片" src="https://github.com/user-attachments/assets/b88192cf-86c0-49c7-9b8e-588d89303454" />
 
    ----------Smoothing----------
 
    **Filter factor** : the standard deviation of the Gaussian filter used for smoothing. You can increase it to get more consistent segmentation. Usual range is [1, 5].
+   
+
+<img width="504" height="378" alt="幻灯片2" src="https://github.com/user-attachments/assets/b4b3067b-ee38-496d-8fa2-818feb3ced39" />
+
+      
 
 #### 3. Processing Parameters
 
@@ -105,8 +107,8 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
    **foreThres** : The threshold of detecting boundaries, usually +3. Can be lowered to down to +1 to encourage boundary detection.
 
    **Intensity difference** : Usually 0. Can increase it to get better segmentation result given that the grayscale difference between the cells and background is distinct.
-
-   <img width="584" height="345" alt="图片" src="https://github.com/user-attachments/assets/e170bbf1-7346-4527-92a7-520d53fa8b2d" />
+   
+   
 
    ----------Tracking----------
 
@@ -119,14 +121,20 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
    **Use motion flow estimation** : flags whether to apply motion flow methods during registration. The use of motion flow often achieves better results.
 
    **max distance** : a rough bound of the maximum displacement in pixels from frame t to t+1 (e.g. in division case, the displacement from the division spot to the location of a child in the next frame). It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable transitions.
+   
 
-   <img width="590" height="435" alt="图片" src="https://github.com/user-attachments/assets/d80d99e9-82c3-4a32-ba15-b561e4618656" />
+  <img width="504" height="378" alt="幻灯片3" src="https://github.com/user-attachments/assets/56efe5e7-1128-4c6e-8186-c85a224de0d4" />
+  
+
    
 #### 4. Start Tracking
 
    After you have set all the parameters, turn to the *Start Tracking* page. Click *save* button to save path and parameters above. Then click *Run* button to start ITEC!
+   
 
-   <img width="603" height="435" alt="图片" src="https://github.com/user-attachments/assets/ec642505-31ff-4f24-9025-f0997f4ae4df" />
+  <img width="504" height="378" alt="幻灯片4" src="https://github.com/user-attachments/assets/84a1e7fd-9637-4dd1-b9bf-4590020d9b84" />
+  
+
 
 </details>
 
