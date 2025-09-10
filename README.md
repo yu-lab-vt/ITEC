@@ -29,7 +29,7 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
    When downloading MATLAB, please include at least the following toolboxes: `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`. Or you may install those applications afterwards.
 
-   A download tutorial for MATLAB can be found in ***MATLAB Installation***.
+   A download tutorial for MATLAB can be found in [MATLAB_Installation.md](documents/MATLAB_Installation.md).
 
 3. Data Preparation
 
@@ -37,9 +37,9 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
 ### Start ITEC Program
 
-For MATLAB with a graphical user interface(GUI), run `ITEC.mlapp` with MATLAB to start the interface.
+For MATLAB with a graphical user interface(GUI), run `ITEC.mlapp` under `.../ITEC-master/src/` directory with MATLAB to start the interface.
 
-For remote users, please first follow the guide in ***Set Path and Parameters*** to tune your parameters in `params.csv` under `.../ITEC-master/src/` directory. then run the `demo.m` using the following command:
+For remote users, please first follow the guide in ***Set Path and Parameters*** to tune your parameters in `.../ITEC-master/src/params.csv`. then run the `demo.m` using the following commands:
    
 ```
 cd YOUR_FOLDER/ITEC-master/src/ 
@@ -195,7 +195,7 @@ For remote users, please unfold **Set Path and Parameters (with parameter table)
 
 * Visualization
 
-   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. An easy-to-use tutorial for Mastodon can be found in ***Mastodon Usage***.
+   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. An easy-to-use tutorial for Mastodon can be found in [Mastodon_Usage.md](documents/Mastodon_Usage.md).
 
    
 
