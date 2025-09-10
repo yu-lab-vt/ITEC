@@ -194,7 +194,6 @@ For remote users, you may also set those configurations in a CSV file directly. 
 You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at [github](https://github.com/yu-lab-vt/ITEC).
 
    
-## Examples
 
 ## Mastodon usage
 
