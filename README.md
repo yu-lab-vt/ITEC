@@ -181,6 +181,8 @@ For remote users, you may also set those configurations in a CSV file directly. 
 
    <img width="603" height="435" alt="图片" src="https://github.com/user-attachments/assets/ec642505-31ff-4f24-9025-f0997f4ae4df" />
    
+## Set Path and Parameters (with parameter tables)
+
 
 ## Check output and re-tune parameters
    The output of ITEC contains the follows: 
@@ -191,7 +193,6 @@ For remote users, you may also set those configurations in a CSV file directly. 
 
 You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at [github](https://github.com/yu-lab-vt/ITEC).
 
-## Set Path and Parameters (with parameter tables)
    
 # Examples
 
