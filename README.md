@@ -1,12 +1,11 @@
 # Readme for ITEC
 
 * [Overview](#Overview)
-* [Quickstart](#Quickstart)
 * [Getting started with ITEC](#Getting-started-with-ITEC)
-    * [Input](#Input)
-    * [Set Path and Parameters (with UI interface)](#Set-Path-and-Parameters-with-UI-interface))
-    * [Set Path and Parameters (with parameter tables)](#Set-Path-and-Parameters-with-parameter-tables))
-    * [Output](#Output)
+    * [Preparation](#Preparation)
+    * [Start ITEC Program](#Start-ITEC-Program)
+    * [Set Path and Parameters](#Set-Path-and-Parameters)
+    * [Output and Visualization](#Output-and-Visualization)
 * [FAQ](#FAQ)
 * [Theory support](#Theory-support)
 * [Citing](#Citing)
@@ -16,70 +15,56 @@
 ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated to assisting developmental biologists in achieving whole-embryo lineage reconstruction and facilitating new biological discoveries. We provide the source code in MATLAB version along with a detailed user manual for reference.
 
 
-
-## Quickstart
-
-Running ITEC involves the following steps:
-
-1. Code Download(link!)
-
-1. Download the complete version of MATLAB (R2022b after is recommended)
-
-   NOTE: When downloading MATLAB, please include at least the following toolboxes: `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`.
-
-   The download tutorial for MATLAB can be found in ***MATLAB Installation***.
-
-1. Modify the parameter table
-
-   This parameter table is in `.../ITEC-master/params.csv`, containing your input data path, output result path, and other adjustable parameters with biological or data characteristic significance. Suggest reading ***Getting started with ITEC*** section first, and then fine-tuning the parameters based on your own data.
-
-1. Prepare your data
-
-   ITEC supports input in TIFF format, with each frame stored as an independent TIFF file. Your data should be stored in the *data\_path* of the parameter table.
-
-1. Run the pipeline
-
-   For MATLAB with a visual interface, you can switch the current folder to `.../ITEC-master/src`, open `.../ITEC-master/src/demo.m` and click *run*.
-   
-   For MATLAB running via the command line, the following command needs to be run:
-   
-   ```
-   cd YOUR_FOLDER/ITEC-master/src/ 
-   nohup matlab -nodisplay -nosplash -nodesktop <demo.m >outinfo.txt &
-   ```
-
-
-1. Visualization
-
-   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. For a detailed format of the results, please refer to ***Getting started with ITEC***. An easy-to-use tutorial for Mastodon can be found in ***Mastodon Usage***.
-
-
 ## Getting started with ITEC
 
-### Input
+### Preparation
 
-   The typical input of ITEC contains the follows:
+#### 1. Code Download
 
-1. A 3D+t image sequence in TIFF format, with each frame stored as an independent .tif file. 
-1. Cell tracking parameters related to your data. Please refer to ***Getting started with ITEC*** for the detailed meaning for parameters.
+Download the full code of ITEC on github. Then unzip it to your working directory.
 
-To input your dataset and set parameters, one way is to use the ITEC graphical interface, which is guided in ***Set Path and Parameters***. Run `ITEC.mlapp` with MATLAB to start the interface.
+#### 2. MATLAB Installation
 
-For remote users, you may also set those configurations in a CSV file directly. Templates of params.csv is available here(link!). After configuration, you can run the `demo.m` file with MATLAB to start the pipeline. Make sure your configuration file is named as params.csv under `.../ITEC-master/src/` directory.
+   Download the complete version of MATLAB (R2022b after is recommended)
 
-### Set Path and Parameters (with UI interface)
+   When downloading MATLAB, please include at least the following toolboxes: `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`. Or you may install those applications afterwards.
 
+   A download tutorial for MATLAB can be found in ***MATLAB Installation***.
+
+#### 3. Data Preparation
+
+   ITEC supports input in TIFF format, with each frame stored as an independent TIFF file. The channels of each frame should be in XYZ order.
+
+### Start ITEC Program
+
+For MATLAB with a graphical user interface(GUI), run `ITEC.mlapp` with MATLAB to start the interface.
+
+For remote users, please first follow the guide in ***Set Path and Parameters*** to tune your parameters in `params.csv` under `.../ITEC-master/src/` directory. then run the `demo.m` using the following command:
+   
+```
+cd YOUR_FOLDER/ITEC-master/src/ 
+nohup matlab -nodisplay -nosplash -nodesktop <demo.m >outinfo.txt &
+```
+
+### Set Path and Parameters
+
+For MATLAB GUI users, please view **Set Path and Parameters (with GUI interface)** to tune your parameters.
+
+For remote users, please unfold **Set Path and Parameters (with parameter table)**.
+
+<details>
+<summary> Set Path and Parameters (with GUI interface) </summary>
 
 #### 1. Import
 
-   On the *Import* page, you can set the path to load your dataset and output tracking results. You may also set the frame range you want to analyze.    
+   On the *Import* page, you can set the path to load your dataset and output tracking results. You may also set the frame range you want to analyze.   
+
+   <img width="565" height="236" alt="图片" src="https://github.com/user-attachments/assets/dc4bb42a-2575-40ce-b4c6-245b7f19ee10" />
    
-   To import your .csv of parameters directly, click ‘I want to import parameters directly from a parameter file’ on the *import* page, and set the path to load the file. Path and parameters will be loaded automatically.
+   You may also import your .csv of parameters directly **if you have runned ITEC previously**. Click ‘I want to import parameters directly from a parameter file’ on the *import* page, and set the path to load the file. Path and parameters will be loaded automatically. Please refer to ***Set Path and Parameters (with parameter table)*** for their names in table.
 
-   <img width="612" height="375" alt="图片" src="https://github.com/user-attachments/assets/6814b2ed-c3e4-421d-83d9-54dcf02c31f9" />
-
-   <img width="538" height="225" alt="图片" src="https://github.com/user-attachments/assets/dc4bb42a-2575-40ce-b4c6-245b7f19ee10" />
-
+   
+   <img width="490" height="300" alt="图片" src="https://github.com/user-attachments/assets/6814b2ed-c3e4-421d-83d9-54dcf02c31f9" />
 
 #### 2. General Parameters
 
@@ -142,18 +127,75 @@ For remote users, you may also set those configurations in a CSV file directly. 
    After you have set all the parameters, turn to the *Start Tracking* page. Click *save* button to save path and parameters above. Then click *Run* button to start ITEC!
 
    <img width="603" height="435" alt="图片" src="https://github.com/user-attachments/assets/ec642505-31ff-4f24-9025-f0997f4ae4df" />
+
+</details>
+
+<details>
+<summary> Set Path and Parameters (with parameter table) </summary>
+
+#### 1. General Parameters
+
+   <div>
+
+   | Params | Name in UI | Descrption | Comments |
+   | ---------- | -----------| ----------|---------|
+   | *z\_resolution*   | z-x/y ratio | the ratio of Z resolution OVER X/Y resolution. Z resolution refers to the distance between Z layers, in um typically. X/Y resolution refers to the real distance between neighbouring pixels | Your may derive the X/Y resolution by dividing the real length of the scope(1mm, e.g.) by the number of pixels along X direction(700, e.g.). The typical ratio should be no less than 1 |
+   | *minSize* | Cell Size | the area lower bound of cells along xy plane, unit in pixels | The algorithm will not detect cells below that bound, so generally a loose threshold is preferred |
+   | *maxSize* | Cell Size | the area upper bound of cells along xy plane, unit in pixels | The algorithm will not detect cells beyond that bound, so generally a loose threshold is preferred |
+   | *scale\_term* | Intensity upper bound | Pixels whose grayscale is above that bound will be set to that bound to ensure the contrast between pixels | You may use ImageJ to choose the upper quantile of the intensity as this bound |
+   | *clipping* | Intensity lower bound | Similar to the upper bound, the algorithm will reset pixels below that bound to 0 and further enhance contrast | For generally dark data, 0 should be fine, while it can be increased when the background noise is generally high |
+   | *bgIntensity* | Background intensity | a general threshold of the grayscale of the background compared to the cells. Cells with intensity below that threshold won’t be detected | You may use ImageJ to help you set an approximate value |
+   | *filter\_sigma* | Filter factor | the intensity of the Gaussian filter used to highlight signals. | You can increase it when background noise is high, or to get more conservative  segmentation. Usual range is [1, 5] |
    
-### Set Path and Parameters (with parameter tables)
+   </div>
+
+#### 2. Segmentation Parameters
+   
+   <div>
+
+   | Params | Name in UI | Descrption | Comments |
+   | ---------- | -----------| ----------|---------|
+   | *visualization*   | Save visualization results | flags whether to save the visualized results | You may choose no to speed up the process |
+   | *smFactor* | smFactor | controls the power of segmentation | You can increase it to prevent over-segmentation. Usual range is [0.3, 2] |
+   | *curvesThres* | curvesThres | The threshold of detecting seeds for core regions | Usually -5. Can be increased to up to -3 to encourage cellular core detection |
+   | *foreThres* | foreThres | The threshold of detecting boundaries | Usually +3. Can be lowered to down to 1 to encourage boundary detection |
+   | *diffIntensity* | Intensity difference | controls segmentation based on intensity difference between the cells and background | Usually 0. Can increase it to get better segmentation results when the difference is distinct |
+   
+   </div>
 
 
-### Output
+#### 3. Tracking Parameters
+   
+   <div>
+
+   | Params | Name in UI | Descrption | Comments |
+   | ---------- | -----------| ----------|---------|
+   | *maxIter*   | maxIter | The max number of iteration steps of error correction | Usually 3~5 is enough for convergence. Can increase it if results vary much with the iterations |
+   | *division\_thres* | division factor | The intensity of detecting divisions | Can increase it to detect more divisions. Usual range is [0.9, 1] |
+   | *saveAllResults* | Save augmented seg. Results | flags whether to save the segmentation results after error-correction-based tracking | Note that the error correction process may change the previous segmentation result to achieve better linkage |
+   | *useMotionFlow* | Use motion flow estimation | flags whether to apply motion flow methods during registration | The use of motion flow often achieves better results |
+   | *max\_dist* | Max distance | a rough bound of the maximum displacement in pixels from frame t to t+1 | It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable transitions |
+   
+   </div>
+
+</details>
+
+### Output and Visualization
+
+#### 1. Output
+
    The output of ITEC contains the follows: 
 
 1. A standard CSV file, which succinctly contains the unique ID, XYZ coordinates, frames, and the parent ID associated with the previous frame of all cells.
 
 1. TGMM format that can be directly opened by Mastodon, including accompanying h5/xml. Regarding the use of Mastodon, you can refer to ***Mastodon usage***.
 
-You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at [github](https://github.com/yu-lab-vt/ITEC).
+
+You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at github.
+
+#### 2. Visualization
+
+   The tracking results are saved in the *result\_path* of the parameter table. The results include the coordinates, frames, and parent-child relationships of all cells. You can use Mastodon (Fiji plugin for cell tracking analysis) to visualize the tracking results. An easy-to-use tutorial for Mastodon can be found in ***Mastodon Usage***.
 
    
 
