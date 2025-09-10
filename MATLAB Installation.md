@@ -1,9 +1,11 @@
 ## MATLAB Installation
 
 
-   Please refer to the MATLAB official websites for [downloads](https://ww2.mathworks.cn/downloads/) and [installation guide](https://ww2.mathworks.cn/help/install/ug/install-products-with-internet-connection.html). Many schools and research institutions offer free MATLAB. For licensing issues with MATLAB, please consult your institution. Note that the toolboxes `Image Processing Toolbox` `Statistics and Machine Learning Toolbox` `Parallel Computing Toolbox` need to be installed during MATLAB installation.
+   Please refer to the MATLAB official websites for [downloads](https://ww2.mathworks.cn/downloads/) and [installation guide](https://ww2.mathworks.cn/help/install/ug/install-products-with-internet-connection.html). Many schools and research institutions offer free MATLAB. For licensing issues with MATLAB, please consult your institution. 
+   
+  **Note: the toolboxes `Image Processing Toolbox` `Statistics and Machine Learning Toolbox` `Parallel Computing Toolbox` need to be installed during MATLAB installation.**
 
-   **If you are using a server without a graphical interface**, you can install MATLAB as follows:
+   If you are using a server without a graphical interface, you can install MATLAB as follows:
 
 1. Download the MATLAB version for the server via your PC, and then upload it to the server. The following guide takes MATLAB R2023a as an example.
 
