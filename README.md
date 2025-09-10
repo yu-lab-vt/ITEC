@@ -99,9 +99,9 @@ Running ITEC involves the following steps:
    The typical input of ITEC contains the follows:
 
 1. A 3D+t image sequence in TIFF format, with each frame stored as an independent .tif file. 
-1. Cell tracking parameters related to your data. Please refer to the next section for the detailed meaning for parameters.
+1. Cell tracking parameters related to your data. Please refer to ***Getting started with ITEC*** for the detailed meaning for parameters.
 
-To input your dataset and set parameters, one way is to use the ITEC graphical interface, which is guided in the next section of the tutorial. Run `ITEC.mlapp` with MATLAB to start the interface.
+To input your dataset and set parameters, one way is to use the ITEC graphical interface, which is guided in ***Set Path and Parameters***. Run `ITEC.mlapp` with MATLAB to start the interface.
 
 For remote users, you may also set those configurations in a CSV file directly. Templates of params.csv is available here(link!). After configuration, you can run the `demo.m` file with MATLAB to start the pipeline. Make sure your configuration file is named as params.csv under `.../ITEC-master/src/` directory.
 
@@ -190,6 +190,8 @@ For remote users, you may also set those configurations in a CSV file directly. 
 1. TGMM format that can be directly opened by Mastodon, including accompanying h5/xml. Regarding the use of Mastodon, you can refer to ***Mastodon usage***.
 
 You can find all of the output in your *result\_path*. If you are not satisfied with the results, you may adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to ***FAQ*** or contact us at [github](https://github.com/yu-lab-vt/ITEC).
+
+## Set Path and Parameters (with parameter tables)
    
 # Examples
 
@@ -243,7 +245,7 @@ You can find all of the output in your *result\_path*. If you are not satisfied 
 
 ### 1. I found a lot of cells over-segmented in the result. How can I tune the parameters?
 
-   This problem may result from distinct noise or too intensive segmentation. Accordingly, you may tune up the Filter factor in *Smooting* section, or the smFactor  in *Segmentation* section.
+   This problem may result from distinct noise or too intensive segmentation. Accordingly, you may tune up the Filter factor in *Smoothing* section, or the smFactor in *Segmentation* section.
 
 ### 2. I found a lot of cells under-segmented in the result. How can I tune the parameters?
 
@@ -261,11 +263,11 @@ You can find all of the output in your *result\_path*. If you are not satisfied 
 
    You may first check if your *Grayscale* parameters are set properly. As ITEC remaps the intensity based on upper/lower bounds during pre-processing, a smaller range is better to show the contrast in between. Also make sure the Background intensity is set appropriately within the bounds, not too high. 
 
-   On top of that, you may tune up the curveThres a little bit in *advanced parameters for segmentation*. Framented track may also result from a low Max distance setting in *advanced parameters for tracking*,with data of compromised time resolution.
+   On top of that, you may tune up the curveThres a little bit in *advanced parameters for segmentation*. Framented track may also result from a low max distance setting in *advanced parameters for tracking*, with data of compromised time resolution.
 
 ### 6. I found ITEC detected few/too many divisions. How can I tune the parameters?
 
-   Division detection is mainly controlled by the division factor in *Tracking* section. Try tune it up a bit to encourage more detections of divsion, and vice versa. If the time resolution of your data is compromised, you may tune up the Max distance in *advanced parameters for tracking* to allow more vibrant transitions.
+   Division detection is mainly controlled by the division factor in *Tracking* section. Try tune it up a bit to encourage more detections of divsion, and vice versa. If the time resolution of your data is compromised, you may tune up the max distance in *advanced parameters for tracking* to allow more vibrant transitions.
 
 ### 7. I found ITEC takes a long time at every stage. Is there anything wrong?
 
