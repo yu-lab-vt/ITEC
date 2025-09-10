@@ -48,13 +48,13 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 
 ### Set Path and Parameters
 
-For MATLAB GUI users, please refer to [Set Path and Parameters (with GUI interface)](#Set-Path-and-Parameters-with-GUI-interface) to tune your parameters.
+For MATLAB GUI users, please refer to [Set Path and Parameters (with GUI interface)](#Set-path-and-parameters-with-gui-interface) to tune your parameters.
 
 For remote users, please refer to [Set Path and Parameters (with parameter table)](#Set-path-and-parameters-with-parameter-table) to tune your parameters.
 
 We provide [Examples](examples/README.md) of zebrafish embryo development data along with corresponding parameters, which users can directly download and run.
 
-<details>
+<details id="Set-path-and-parameters-with-gui-interface">
 <summary> Set Path and Parameters (with GUI interface) </summary>
 
 #### 1. Import
@@ -140,7 +140,7 @@ We provide [Examples](examples/README.md) of zebrafish embryo development data a
 
 </details>
 
-<details>
+<details id="Set-path-and-parameters-with-parameter-table">
 <summary> Set Path and Parameters (with parameter table) </summary>
 
 #### 1. General Parameters
@@ -184,7 +184,7 @@ We provide [Examples](examples/README.md) of zebrafish embryo development data a
    | *division\_thres* | division factor | The intensity of detecting divisions | Can increase it to detect more divisions. Usual range is [0.9, 1] |
    | *saveAllResults* | Save augmented seg. Results | flags whether to save the segmentation results after error-correction-based tracking | Note that the error correction process may change the previous segmentation result to achieve better linkage |
    | *useMotionFlow* | Use motion flow estimation | flags whether to apply motion flow methods during registration | The use of motion flow often achieves better results |
-   | *max\_dist* | Max distance | a rough bound of the maximum displacement in pixels from frame t to t+1 | It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable transitions |
+   | *max\_dist* | max distance | a rough bound of the maximum displacement in pixels from frame t to t+1 | It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable transitions |
    
    </div>
 
