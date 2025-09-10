@@ -1,0 +1,14 @@
+parameters for ITEC,,,,,
+General Parameters,,Segmentation Parameters,,Tracking Parameters,
+data_path,./data2,visualization,TRUE,maxIter,5
+result_path,./result2,smFactorLst,2,division_thres,0.95
+start_tm,,curveThres,-5,saveAllResults,TRUE
+end_tm,,forezThres,3,useMotionFlow,TRUE
+z_resolution,5.86,diffIntensity,0,max_dist,50
+minSize,200,,,,
+maxSize,20000,,,,
+xy_downSampleScale,2,,,,
+scale_term,200,,,,
+clipping,0,,,,
+bgIntensity,10,,,,
+filter_sigma,3,,,,
