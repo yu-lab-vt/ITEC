@@ -3,9 +3,7 @@
 
 # Overview
 
-Our method is designed specifically for automatic tracking of large-scale embryonic cells and has the following characteristics:
-
-**% 补充文章中Introduction部分**
+ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated to assisting developmental biologists in achieving whole-embryo lineage reconstruction and facilitating new biological discoveries. We provide the source code in MATLAB version along with a detailed user manual for reference.
 
 
 
