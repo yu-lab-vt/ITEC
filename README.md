@@ -210,7 +210,7 @@ For remote users, please refer to [Set Path and Parameters (with parameter table
 
 ## Theory Support
 
-   Our paper can be found here. If you have any questions about the method, please contact <yug@tsinghua.edu.cn>
+   Our paper can be found here. If you have any questions about ITEC, please contact <yug@tsinghua.edu.cn>
 
 
 
