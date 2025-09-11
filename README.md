@@ -48,13 +48,9 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 
 ### Set Path and Parameters
 
-For MATLAB GUI users, please refer to [Set Path and Parameters (with GUI interface)](#Set-path-and-parameters-with-gui-interface) to tune your parameters.
-
-For remote users, please refer to [Set Path and Parameters (with parameter table)](#Set-path-and-parameters-with-parameter-table) to tune your parameters.
-
 
 <details id="Set-path-and-parameters-with-gui-interface">
-<summary> Set Path and Parameters (with GUI interface) </summary>
+<summary> Set Path and Parameters with GUI interface (for MATLAB GUI users) </summary>
 
 #### 1. Import
 
@@ -140,7 +136,7 @@ For remote users, please refer to [Set Path and Parameters (with parameter table
 </details>
 
 <details id="Set-path-and-parameters-with-parameter-table">
-<summary> Set Path and Parameters (with parameter table) </summary>
+<summary> Set Path and Parameters with parameter table (for remote users) </summary>
 
 #### 1. General Parameters
 
