@@ -3,7 +3,7 @@
 * [Overview](#Overview)
 * [Getting started with ITEC](#Getting-started-with-ITEC)
     * [Preparation](#Preparation)
-    * [Start ITEC Program](#Start-ITEC-Program)
+    * [Start ITEC](#Start-ITEC)
     * [Set Path and Parameters](#Set-Path-and-Parameters)
     * [Outputs](#Outputs)
     * [Parameter Fine-Tuning](#Parameter-Fine-Tuning)
