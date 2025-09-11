@@ -21,7 +21,7 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
 1. **Code Download**
 
-   Download the full code of ITEC on github. Then unzip it to your working directory.
+   [Download](https://github.com/yu-lab-vt/ITEC/archive/refs/heads/main.zip) the code and unzip it to your working directory.
 
 2. **MATLAB Installation**
 
