@@ -25,15 +25,15 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
 2. **MATLAB Installation**
 
-   Download the complete version of MATLAB (R2022b after is recommended)
+   Version Requirement: R2022b or later is recommended
 
-   When downloading MATLAB, please include at least the following toolboxes: `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`. You can also install these toolboxes afterwards.
+   Toolbox Requirement:  `Image Processing Toolbox`,`Statistics and Machine Learning Toolbox`,`Parallel Computing Toolbox`.
 
    A download tutorial for MATLAB can be found in [MATLAB Installation](documents/MATLAB%20Installation.md).
 
-3. **Data Preparation**
+4. **Data Preparation**
 
-   ITEC supports input in TIFF format, with each frame stored as an independent TIFF file.
+   ITEC supports raw data in TIFF format, with each frame stored as an independent TIFF file.
 
 ### Start ITEC
 
