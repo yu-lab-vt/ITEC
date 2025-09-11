@@ -1,4 +1,4 @@
-# Readme for ITEC
+# ITEC
 
 * [Overview](#Overview)
 * [Getting started with ITEC](#Getting-started-with-ITEC)
