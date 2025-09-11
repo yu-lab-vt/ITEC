@@ -5,7 +5,7 @@
     * [Preparation](#Preparation)
     * [Start ITEC](#Start-ITEC)
     * [Set Path and Parameters](#Set-Path-and-Parameters)
-    * [Outputs](#Outputs)
+    * [Output and Visualization](#Output-and-Visualization)
     * [Parameter Fine-Tuning](#Parameter-Fine-Tuning)
 * [Theory support](#Theory-support)
 * [Citing](#Citing)
@@ -189,9 +189,8 @@ For remote users, please refer to [Set Path and Parameters (with parameter table
 
 </details>
 
-### Outputs
+### Output and Visualization
 
-* **ITEC Output and Visualization**
 
    The output of ITEC (in your *result\_path*) contains the follows: 
 
