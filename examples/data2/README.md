@@ -1,1 +1,1 @@
-**Please place data2 in this path.**
+**Please place *data2* in this path.**
