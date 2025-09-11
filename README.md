@@ -193,14 +193,13 @@ For remote users, please refer to [Set Path and Parameters (with parameter table
 
 * **ITEC Output and Visualization**
 
-   The output of ITEC contains the follows: 
+   The output of ITEC (in your *result\_path*) contains the follows: 
 
    1. A standard CSV file, which succinctly contains the unique ID, XYZ coordinates, frames, and parent-child relationships of all cells.
 
    2. TGMM format and accompanying h5/xml that can be directly opened by Mastodon (Fiji plugin for cell tracking analysis). An easy-to-use tutorial for Mastodon can be found in [Mastodon Usage](documents/Mastodon%20Usage.md).
 
 
-   You can find all of the output in your *result\_path*. If you are not satisfied with the results, you can adjust the parameters and run again. If you have any difficulties tuning the parameters, please refer to [FAQ](#FAQ) or contact us.
 
 ### Parameter Fine-Tuning
 
