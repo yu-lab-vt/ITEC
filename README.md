@@ -37,12 +37,12 @@ ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated
 
 ### Start ITEC
 
-For MATLAB with a graphical user interface(GUI), run `ITEC.mlapp` under `.../ITEC-master/src/` directory with MATLAB to start the interface.
+For MATLAB with a graphical user interface(GUI), run `ITEC.mlapp` under `./ITEC-main/src/` directory with MATLAB to start the interface.
 
 For remote users, please first follow the guide in [Set Path and Parameters](#Set-Path-and-Parameters) to tune your parameters in `./ITEC-main/src/params.csv`. Then run the `demo.m` using the following commands:
    
 ```
-cd YOUR_FOLDER/ITEC-master/src/ 
+cd YOUR_FOLDER/ITEC-main/src/ 
 nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 ```
 
