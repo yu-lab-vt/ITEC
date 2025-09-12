@@ -145,8 +145,8 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
    | Params | Name in UI | Descrption | Comments |
    | ---------- | -----------| ----------|---------|
    | *z\_resolution*   | z-x/y ratio | the ratio of Z resolution OVER X/Y resolution. Z resolution refers to the distance between Z layers, and X/Y resolution refers to the distance between neighbouring pixels | For example, if each pixel between x and y in a dataset represents 0.25 μm, and the distance between adjacent z-layers is 1 μm, then the z-x/y ratio should be set to 4. Most datasets are anisotropic, meaning the z-x/y ratio is usually greater than 1 |
-   | *minSize* | Cell Size | the volume lower bound of cells along xy plane, unit in voxels | The algorithm will not detect cells below that bound, so generally a loose threshold is preferred |
-   | *maxSize* | Cell Size | the volume upper bound of cells along xy plane, unit in voxels | The algorithm will not detect cells beyond that bound, so generally a loose threshold is preferred |
+   | *minSize* | Cell Size | the volume lower bound of cells, unit in voxels | The algorithm will not detect cells below that bound, so generally a loose threshold is preferred |
+   | *maxSize* | Cell Size | the volume upper bound of cells, unit in voxels | The algorithm will not detect cells beyond that bound, so generally a loose threshold is preferred |
    | *scale\_term* | Intensity upper bound | Pixels whose grayscale is above that bound will be set to that bound to ensure the contrast between pixels | You can choose the upper intensity quantile as this bound |
    | *clipping* | Intensity lower bound | Similar to the upper bound, the algorithm will reset pixels below that bound to 0 and further enhance contrast | You can set the lower intensity quantile of the background region as this bound |
    | *bgIntensity* | Background intensity | a general threshold of the background grayscale. Cells with intensity below the threshold won’t be detected | You can use ImageJ to help you set an approximate value |
@@ -179,7 +179,7 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
    | *division\_thres* | division factor | The confidence level for division detection | Can increase it to detect more divisions. Usual range is [0.9, 1] |
    | *saveAllResults* | Save augmented seg. Results | flags whether to save the segmentation results after error-correction-based tracking | Note that the error correction process may change the previous segmentation result to achieve better linkage |
    | *useMotionFlow* | Use motion flow estimation | flags whether to apply motion flow methods during registration | The use of motion flow often achieves better results |
-   | *max\_dist* | max distance | a rough bound of the maximum displacement in pixels from frame t to t+1 | It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable linkages |
+   | *max\_dist* | max distance | a rough bound of the maximum displacement in pixels from frame t to t+1 | It is used to exclude too far motion between frames. Usually 50 is fine. You may decrease it if you find some unreasonable linkages |
    
    </div>
 
