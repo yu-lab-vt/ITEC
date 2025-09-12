@@ -117,7 +117,7 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 
    **Use motion flow estimation** : flags whether to apply motion flow methods during registration. The use of motion flow often achieves better results.
 
-   **max distance** : a rough bound of the maximum displacement in pixels from frame t to t+1 (e.g. in division case, the displacement from the division spot to the location of a child in the next frame). It is used to exclude too far transition between frames. Usually 50 is fine. You may decrease it if you find some unreasonable transitions.
+   **max distance** : a rough bound of the maximum displacement in pixels from frame t to t+1 (e.g. in division case, the displacement from the division spot to the location of a child in the next frame). It is used to exclude too far motion between frames. Usually 50 is fine. You may decrease it if you find some unreasonable linkages.
    
 
   <img width="504" height="378" alt="幻灯片3" src="https://github.com/user-attachments/assets/56efe5e7-1128-4c6e-8186-c85a224de0d4" />
