@@ -2,7 +2,7 @@
 
 Here, we provide two examples of ITEC cell tracking, including the raw data and parameter tables. Users can directly run [demo_data1.m](demo_data1.m), [demo_data2.m](demo_data2.m), and view the results.
 
-The raw **data** can be download from [here](https://data.mendeley.com/datasets/tvpnf435jp/1).
+The raw **data** can be downloaded from [here](https://data.mendeley.com/datasets/tvpnf435jp/1).
 
 * **data1**
 
