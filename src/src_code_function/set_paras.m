@@ -43,7 +43,7 @@ function [paras, paras_instSeg, paras_tracking] = set_paras(filepath)
         paras.result_path = '../result';  
     end
     if paras.z_resolution > 1
-        paras.shift(3) = paras.shift(3)/(min(floor(paras.z_resolution),4));
+        paras.shift(3) = round(paras.shift(3)/(min(floor(paras.z_resolution),4)));
     end
     if paras.z_resolution <= 2
         paras.filter_sigma = [paras.filter_sigma,paras.filter_sigma,paras.filter_sigma/paras.z_resolution];
@@ -140,3 +140,4 @@ function s = merge_vector_fields(s)
         end
     end
 end
+
