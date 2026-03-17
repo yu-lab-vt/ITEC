@@ -214,9 +214,8 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
    Our paper can be found [here](https://doi.org/10.64898/2026.03.12.711203). If you have any questions about ITEC, please contact <yug@tsinghua.edu.cn>.
 
 ## Our users
-```text
-Wan, Y., El Kholtei, J., Jenie, I., Colomer-Rosell, M., Liu, J., Zhang, Q., ... & Schier, A. F. (2026). Whole-embryo spatial transcriptomics at subcellular resolution from gastrulation to organogenesis. Science, 391(6790), eadt3439.
-```
+> Wan et al. (2026). Whole-embryo spatial transcriptomics at subcellular resolution from gastrulation to organogenesis. **Science**, 391(6790), eadt3439.
+
 ## Citing
 ```bibtex
 @article{wang2026high,
