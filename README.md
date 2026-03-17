@@ -216,8 +216,12 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 
 ## Citing
 @article{wang2026high,
+
 title={High-Fidelity Long-term Whole-embryo Lineage and Fate Reconstruction by Iterative Tracking with Error Correction},
+
 author={Wang, Mengfan and Zhang, Qinghua and Wang, Congchao and Chi, Yunfeng and Zheng, Wei and Mu, Zeyu and Cao, Xiangyu and Zhang, Weizhan and Yang, Boao and Schier, Alexander F. and Acedo, Joaquin Navajas and Wan, Yinan and Yu, Guoqiang},
+
 year={2026},
+
 doi={10.64898/2026.03.12.711203}
 }
