@@ -216,7 +216,7 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 ## Our users
 ```text
 Wan, Y., El Kholtei, J., Jenie, I., Colomer-Rosell, M., Liu, J., Zhang, Q., ... & Schier, A. F. (2026). Whole-embryo spatial transcriptomics at subcellular resolution from gastrulation to organogenesis. Science, 391(6790), eadt3439.
-
+```
 ## Citing
 ```bibtex
 @article{wang2026high,
@@ -225,3 +225,4 @@ Wan, Y., El Kholtei, J., Jenie, I., Colomer-Rosell, M., Liu, J., Zhang, Q., ... 
   year={2026},
   doi={10.64898/2026.03.12.711203}
 }
+```
