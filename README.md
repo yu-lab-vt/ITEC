@@ -211,7 +211,7 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 
 ## Theory Support
 
-   Our paper can be found [here](https://doi.org/10.64898/2026.03.12.711203). If you have any questions about ITEC, please contact <yug@tsinghua.edu.cn>
+   Our paper can be found [here](https://doi.org/10.64898/2026.03.12.711203). If you have any questions about ITEC, please contact <yug@tsinghua.edu.cn>.
 
 
 ## Citing
