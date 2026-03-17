@@ -213,15 +213,15 @@ nohup matlab -nodisplay -nosplash -nodesktop <demo.m>outinfo.txt &
 
    Our paper can be found [here](https://doi.org/10.64898/2026.03.12.711203). If you have any questions about ITEC, please contact <yug@tsinghua.edu.cn>.
 
+## Our users
+```text
+Wan, Y., El Kholtei, J., Jenie, I., Colomer-Rosell, M., Liu, J., Zhang, Q., ... & Schier, A. F. (2026). Whole-embryo spatial transcriptomics at subcellular resolution from gastrulation to organogenesis. Science, 391(6790), eadt3439.
 
 ## Citing
+```bibtex
 @article{wang2026high,
-
-title={High-Fidelity Long-term Whole-embryo Lineage and Fate Reconstruction by Iterative Tracking with Error Correction},
-
-author={Wang, Mengfan and Zhang, Qinghua and Wang, Congchao and Chi, Yunfeng and Zheng, Wei and Mu, Zeyu and Cao, Xiangyu and Zhang, Weizhan and Yang, Boao and Schier, Alexander F. and Acedo, Joaquin Navajas and Wan, Yinan and Yu, Guoqiang},
-
-year={2026},
-
-doi={10.64898/2026.03.12.711203}
+  title={High-Fidelity Long-term Whole-embryo Lineage and Fate Reconstruction by Iterative Tracking with Error Correction},
+  author={Wang, Mengfan and Zhang, Qinghua and Wang, Congchao and Chi, Yunfeng and Zheng, Wei and Mu, Zeyu and Cao, Xiangyu and Zhang, Weizhan and Yang, Boao and Schier, Alexander F. and Acedo, Joaquin Navajas and Wan, Yinan and Yu, Guoqiang},
+  year={2026},
+  doi={10.64898/2026.03.12.711203}
 }
