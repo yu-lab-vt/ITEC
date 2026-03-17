@@ -13,9 +13,7 @@
 ## Overview
 
 ITEC is a high-precision, large-scale embryonic cell tracking platform dedicated to assisting developmental biologists in achieving whole-embryo lineage reconstruction and facilitating new biological discoveries. We provide the source code in MATLAB version along with a detailed user manual for reference.
-<img width="2268" height="3024" alt="fig1" src="https://github.com/user-attachments/assets/a488e6fc-3f11-4bf5-aa82-fd474ce5e3d5" />
-
-
+<img width="1512" height="2016" alt="fig1" src="https://github.com/user-attachments/assets/a488e6fc-3f11-4bf5-aa82-fd474ce5e3d5" />
 
 https://github.com/user-attachments/assets/8f0ed170-a1bd-4586-8377-90df5215384d
 
