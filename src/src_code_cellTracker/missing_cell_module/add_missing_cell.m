@@ -14,6 +14,10 @@ for i=1:numel(movieInfo.xCoord)
         fprintf('processing %d / %d \n', i, numel(movieInfo.xCoord));
     end
     cur_frame = movieInfo.frames(i);
+    % A manually corrected detection must not be used as a missing-cell endpoint.
+    if isfield(movieInfo, 'lockedDetection') && movieInfo.lockedDetection(i)
+        continue;
+    end
     upt_ids = cell(3,1);
     %% for jump in a track
     if ~isempty(movieInfo.kids{i})

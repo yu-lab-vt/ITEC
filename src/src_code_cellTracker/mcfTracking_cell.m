@@ -28,6 +28,12 @@ movieInfo4gamma = mccTracker(dat_in, movieInfo, g, false, false);
 g.jumpCost = movieInfo4gamma.jumpRatio;              % no need here
 movieInfo = transitCostUpt_cell(movieInfo4gamma, g); % drift corrected
 
+% Import corrections after candidate transition costs exist, so every
+% requested locked edge can be validated against the graph.
+if isfield(q, 'enable_locked_correction') && q.enable_locked_correction
+    movieInfo = applyLockedCorrections(movieInfo, q);
+end
+
 refine_res = det_maps;
 
 if q.removeSamllRegion
@@ -76,4 +82,8 @@ fprintf('--------------------Tracklets Association--------------------\n');
 % module three: merge over-split cell by tracklets association
 [movieInfo, refine_res, g] = broken_tracks_module(movieInfo, refine_res, g, q);
 % module four:test if broken tracks can be merged
-movieInfo = mergeBrokenTracks(movieInfo, g, q);
+if ~isfield(movieInfo, 'lockedDetection') || ~any(movieInfo.lockedDetection)
+    movieInfo = mergeBrokenTracks(movieInfo, g, q);
+else
+    fprintf('Skip final broken-track merge because manual locks are active.\n');
+end

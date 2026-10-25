@@ -14,6 +14,11 @@ kids = movieInfo.kids;
 id = (1:length(xCoord))';
 parentLengths = cellfun(@length, parents);
 childLengths = cellfun(@length, kids);
+if isfield(movieInfo, 'lockedDetection')
+    locked = movieInfo.lockedDetection;
+else
+    locked = false(size(id));
+end
 
 if iscell(parents)
     parentsStr = nan(size(parents)); % 预分配字符串数组
@@ -27,7 +32,7 @@ else
 end
 
 T = table(id, parentLengths, childLengths, frames, xCoord, yCoord, zCoord, ...
-    parentsStr,'VariableNames', {'ID','incoming links','outgoing links', ...
-    'frames','xCoord', 'yCoord', 'zCoord', 'parents'});
+    parentsStr, locked, 'VariableNames', {'ID','incoming links','outgoing links', ...
+    'frames','xCoord', 'yCoord', 'zCoord', 'parents','locked'});
 writetable(T, save_folder);
 

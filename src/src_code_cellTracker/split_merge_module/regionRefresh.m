@@ -37,6 +37,10 @@ for i=1:numel(movieInfo.tracks)
     if length(cur_track)<2
         continue;
     end
+    % Do not split or merge a region participating in a manual correction.
+    if isfield(movieInfo, 'lockedDetection') && any(movieInfo.lockedDetection(cur_track))
+        continue;
+    end
     [res_vec, nodes_inconsistent] = trackMergeTest(i, movieInfo, refine_res, vidMap, g, ...
         eigMaps, q);
 

@@ -19,11 +19,18 @@ if ~isempty(find(detection_arcs(:,1) < 1, 1))
     error('Id should be positive integers from 1 to n.');
 end
 
-n = size(detection_arcs,1); 
+n = size(detection_arcs,1);
 
+% An optional fourth transition column carries hard manual locks.
+if size(transition_arcs,2) >= 4
+    transition_locked = transition_arcs(:,4) ~= 0;
+    transition_arcs = transition_arcs(:,1:3);
+else
+    transition_locked = false(size(transition_arcs,1),1);
+end
 m = n*3+size(transition_arcs,1);
 
-arcs = zeros(m,3); % with the dummy node 
+arcs = zeros(m,3); % with the dummy node
 
 pre_id = detection_arcs(:,1) * 2;
 post_id = detection_arcs(:,1) * 2 + 1;

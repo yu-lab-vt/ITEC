@@ -35,6 +35,12 @@ movieInfo.zCoord = movieInfo.zCoord(new_od);
 movieInfo.orgCoord = movieInfo.orgCoord(new_od,:);
 movieInfo.frames = movieInfo.frames(new_od);
 
+if isfield(movieInfo, 'lockedDetection')
+    movieInfo.lockedDetection = movieInfo.lockedDetection(new_od);
+    locked_parent_before_map = movieInfo.lockParent(new_od);
+    movieInfo.lockNoParent = movieInfo.lockNoParent(new_od);
+end
+
 movieInfo.vox = movieInfo.vox(new_od);
 movieInfo.voxIdx = movieInfo.voxIdx(new_od);
 movieInfo.nei = movieInfo.nei(new_od);
@@ -42,6 +48,15 @@ movieInfo.nei = movieInfo.nei(new_od);
 id_map = nan(id_st(end), 1);
 for i=1:length(id_st)
     id_map(id_st(i)) = maps(od(i),2);
+end
+if exist('locked_parent_before_map', 'var')
+    movieInfo.lockParent = locked_parent_before_map;
+    has_locked_parent = ~isnan(movieInfo.lockParent);
+    mapped_parent = id_map(movieInfo.lockParent(has_locked_parent));
+    if any(isnan(mapped_parent))
+        error('A manually locked parent was removed during region rearrangement.');
+    end
+    movieInfo.lockParent(has_locked_parent) = mapped_parent;
 end
 for i=1:numel(movieInfo.nei)
     if sum(isnan(id_map(movieInfo.nei{i})))>0

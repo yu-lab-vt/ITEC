@@ -30,6 +30,11 @@ for ii = 1:size(detect_divPair,1)
     child1_id = detect_divPair(ii,2);
     child2_id = detect_divPair(ii,3);
 
+    if isfield(movieInfo, 'lockedDetection') && ...
+            any(movieInfo.lockedDetection([parent_id, child1_id, child2_id]))
+        continue;
+    end
+
     parent_track = movieInfo.particle2track(parent_id,1);
     child1_track = movieInfo.particle2track(child1_id,1);
     child2_track = movieInfo.particle2track(child2_id,1);

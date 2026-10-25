@@ -69,4 +69,11 @@ q.growSeedinTracking = true;
 q.multiSeedProcess = true; % did we add multiple cells simultaneously or one by one
 q.splitRegionInTracking = true;
 
+% Optional constrained re-tracking from a manually corrected CSV patch.
+% A patch row with locked=true fixes the row's incoming parent association.
+q.enable_locked_correction = false;
+q.correction_csv_path = '';
+q.corrected_segmentation_path = ''; % optional .mat containing refine_res
+q.lock_conflict_policy = 'error';
+
 end

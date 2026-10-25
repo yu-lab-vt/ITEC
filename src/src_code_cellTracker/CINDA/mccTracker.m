@@ -46,6 +46,22 @@ elseif numel(dat_in) == 3
     movieInfo.parents = parents;
     movieInfo.kids = kids;
 end
+
+% Never silently accept a solution that altered a user-specified relation.
+if isfield(movieInfo, 'lockParent')
+    for locked_child = find(~isnan(movieInfo.lockParent))'
+        locked_parent = movieInfo.lockParent(locked_child);
+        if ~isequal(movieInfo.parents{locked_child}(:), locked_parent)
+            error('Locked association %d -> %d was not preserved by tracking.', ...
+                locked_parent, locked_child);
+        end
+    end
+    for locked_child = find(movieInfo.lockNoParent)'
+        if ~isempty(movieInfo.parents{locked_child})
+            error('Locked no-parent constraint for detection %d was not preserved.', locked_child);
+        end
+    end
+end
 numTracks = numel(trajectories);
 % re-rank trajectories by their starting point
     

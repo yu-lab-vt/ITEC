@@ -4,6 +4,9 @@ function [movieInfo, refine_res, threshold_res, invalid_cell_ids] = ...
 
 cell_sz = cellfun(@length, movieInfo.voxIdx);
 invalid_cell_ids = find(cell_sz < q.minSize | cell_sz > q.maxSize);
+if isfield(movieInfo, 'lockedDetection')
+    invalid_cell_ids(movieInfo.lockedDetection(invalid_cell_ids)) = [];
+end
 for i=1:length(invalid_cell_ids)
     fr = movieInfo.frames(invalid_cell_ids(i));
     idx = movieInfo.voxIdx{invalid_cell_ids(i)};

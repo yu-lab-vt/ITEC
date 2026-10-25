@@ -25,6 +25,9 @@ nei_pre = cell(numel(movieInfo.xCoord), 1);
 edge_post_cost = cell(numel(movieInfo.xCoord), 1);
 nei_post = cell(numel(movieInfo.xCoord), 1);
 for i=1:numel(movieInfo.xCoord)
+    if isfield(movieInfo, 'lockedDetection') && movieInfo.lockedDetection(i)
+        continue;
+    end
     pre_valid_flag = true;
     post_valid_flag = true;
     if g.stableNodeTest % check tracklet's head and tail or isolated node
@@ -40,6 +43,11 @@ for i=1:numel(movieInfo.xCoord)
     if (side_flag==0 || side_flag == 1) && pre_valid_flag
         pre_nei = movieInfo.preNei{i};
         pre_ov = movieInfo.preOvSize{i};
+        if isfield(movieInfo, 'lockedDetection')
+            keep = ~movieInfo.lockedDetection(pre_nei);
+            pre_nei = pre_nei(keep);
+            pre_ov = pre_ov(keep);
+        end
         pre_fr = movieInfo.frames(pre_nei);
         if ~strcmp(g.splitMergeHandle, 'none') % does not consider jump
             validNei = pre_fr == (movieInfo.frames(i)-1);
@@ -55,6 +63,11 @@ for i=1:numel(movieInfo.xCoord)
     if (side_flag==0 || side_flag == 2) && post_valid_flag
         post_nei = movieInfo.nei{i};
         post_ov = movieInfo.ovSize{i};
+        if isfield(movieInfo, 'lockedDetection')
+            keep = ~movieInfo.lockedDetection(post_nei);
+            post_nei = post_nei(keep);
+            post_ov = post_ov(keep);
+        end
         post_fr = movieInfo.frames(post_nei);
         if ~strcmp(g.splitMergeHandle, 'none') % does not consider jump
             validNei = post_fr == (movieInfo.frames(i)+1);

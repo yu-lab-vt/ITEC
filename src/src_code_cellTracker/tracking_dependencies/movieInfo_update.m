@@ -17,6 +17,13 @@ movieInfo.CDist_i2j = cat(1, movieInfo.CDist_i2j, append_cells);
 movieInfo.Cij = cat(1, movieInfo.Cij, append_cells);
 movieInfo.ovSize = cat(1, movieInfo.ovSize, append_cells);
 
+% Newly detected regions are free; preserve lock arrays for old regions.
+if isfield(movieInfo, 'lockedDetection')
+    append_lock_count = reg_num - numel(movieInfo.lockedDetection);
+    movieInfo.lockedDetection = cat(1, movieInfo.lockedDetection, false(append_lock_count,1));
+    movieInfo.lockParent = cat(1, movieInfo.lockParent, nan(append_lock_count,1));
+    movieInfo.lockNoParent = cat(1, movieInfo.lockNoParent, false(append_lock_count,1));
+end
 if ~isfield(movieInfo, 'drift')
     error('Drift not found!');
 end

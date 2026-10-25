@@ -21,14 +21,21 @@ function [trajectories, costs, track_bf_merge, parents, kids] = ...
 % tracks
 % parents: parent nodes of the current nodes
 % kids: kid nodes of the current node
-n = size(detection_arcs,1); 
+n = size(detection_arcs,1);
 
+% The optional fourth column marks a manually locked association.
+if size(transition_arcs,2) >= 4
+    transition_locked = transition_arcs(:,4) ~= 0;
+    transition_arcs = transition_arcs(:,1:3);
+else
+    transition_locked = false(size(transition_arcs,1),1);
+end
 m = n*3+size(transition_arcs,1) + length(find(~isnan(append_arcs(:,2:3))));
 
 src_node = 1;
 sink_node = 1; 
 %sink_node = 2*n+2; % uncomment this if using successive shortest path
-arcs = zeros(m,3); % with the dummy node 
+arcs = zeros(m,3); % with the dummy node
 
 pre_id = detection_arcs(:,1) * 2;
 post_id = detection_arcs(:,1) * 2 + 1;

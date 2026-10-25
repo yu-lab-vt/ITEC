@@ -17,14 +17,37 @@ if circulation_graph
     dat_in = cell(2,1); %  detection matrix andtransition matrix
     detection_arcs = cat(2, (1:vNum)', g.c_en*ones(vNum,1), ...
         g.c_en*ones(vNum,1), movieInfo.Ci);
-    transition_arcs = zeros(1e8,3);
-    % transition linking
+    % The fourth column marks an association that is manually locked.
+    transition_arcs = zeros(1e8,4);
+    % transition linking. A lock cost dominates all finite graph costs;
+    % conflicts are removed below and mccTracker verifies the final result.
+    lock_cost = sum(abs(movieInfo.Ci(isfinite(movieInfo.Ci)))) + 1;
+    for cost_i = 1:numel(movieInfo.Cij)
+        values = movieInfo.Cij{cost_i};
+        lock_cost = lock_cost + sum(abs(values(isfinite(values))));
+    end
+    lock_cost = 10 * max(lock_cost, 1);
     k_dat = 0;
     for i=1:vNum
         f2 = movieInfo.nei{i};
         for j = 1:length(f2)
-            k_dat = k_dat+1;
-            transition_arcs(k_dat,:) = [i f2(j) movieInfo.Cij{i}(j)];
+            child = f2(j);
+            is_locked = false;
+            is_allowed = true;
+            if isfield(movieInfo, 'lockNoParent') && movieInfo.lockNoParent(child)
+                is_allowed = false;
+            elseif isfield(movieInfo, 'lockParent') && ~isnan(movieInfo.lockParent(child))
+                is_allowed = movieInfo.lockParent(child) == i;
+                is_locked = is_allowed;
+            end
+            if is_allowed
+                k_dat = k_dat+1;
+                edge_cost = movieInfo.Cij{i}(j);
+                if is_locked
+                    edge_cost = -lock_cost;
+                end
+                transition_arcs(k_dat,:) = [i child edge_cost is_locked];
+            end
         end
     end
     transition_arcs = transition_arcs(1:k_dat,:);

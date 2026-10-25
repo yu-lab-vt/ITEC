@@ -6,6 +6,9 @@ track_len = cellfun(@length, movieInfo.tracks);
 
 invalid_cell_ids = cat(1, find(isnan(movieInfo.particle2track(:,1))), ...
     movieInfo.tracks{track_len<q.shortestTrack});
+if isfield(movieInfo, 'lockedDetection')
+    invalid_cell_ids(movieInfo.lockedDetection(invalid_cell_ids)) = [];
+end
 
 [movieInfo, refine_res, threshold_res] = ...
     nullify_region(invalid_cell_ids, movieInfo, refine_res, threshold_res);

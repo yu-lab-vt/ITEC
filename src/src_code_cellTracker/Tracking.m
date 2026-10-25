@@ -66,6 +66,21 @@ clear embryo_vid_temp
 file_num = numel(tif_files);
 [refine_res, threshold_res] = matfiles2cell_scaling(refine_res_folder, ...
     'refine_res', timepts_to_process, sc_f, st_loc, sz_crop);
+
+% Optionally begin constrained re-tracking from an edited segmentation.
+if isfield(q, 'enable_locked_correction') && q.enable_locked_correction && ...
+        isfield(q, 'corrected_segmentation_path') && ...
+        ~isempty(q.corrected_segmentation_path)
+    corrected = load(q.corrected_segmentation_path, 'refine_res');
+    if ~isfield(corrected, 'refine_res')
+        error('corrected_segmentation_path must contain a variable named refine_res.');
+    end
+    refine_res = corrected.refine_res;
+    if numel(refine_res) ~= file_num
+        error('Corrected refine_res has %d frames; expected %d.', ...
+            numel(refine_res), file_num);
+    end
+end
 if file_num ~= numel(refine_res)
     warning("The number of segmentation results does not equal to number of files!");
 end
