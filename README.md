@@ -82,5 +82,3 @@ The subsequent segmentation-correction and missing-cell iterations continue. Det
 - Use adjacent-frame links for this prototype. The split/merge stage removes jump links, so a lock across a frame gap can fail later even if it passes the initial import checks.
 - When locks are active, broken-track repair and the final broken-track merge are skipped. Division additions involving protected detections are also skipped. These safeguards limit which related errors can be corrected automatically.
 - The optional segmentation input is not a complete saved-state resume mechanism. Check detection numbering and cached segmentation-dependent data before reusing a previous result.
-
-A minimal smoke check passed in MATLAB R2024b for CSV constraint import and the bundled CINDA solver. In a synthetic assignment example, favoring one corrected connection caused another connection to be reassigned. This check does not establish end-to-end correctness, correction accuracy on real data, or real-time performance.
