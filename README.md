@@ -39,11 +39,11 @@ https://github.com/user-attachments/assets/8f0ed170-a1bd-4586-8377-90df5215384d
 
 3. **Tested Environments**
 
-ITEC has been tested on Ubuntu 22.04, Windows 11, and macOS.
+   ITEC has been tested on Ubuntu 22.04, Windows 11, and macOS.
 
 4. **Hardware Requirements**
 
-A GPU is optional and can be used to accelerate cell segmentation. Segmentation can also run on a CPU. Cell tracking runs on the CPU and does not require a GPU.
+   A GPU is optional and can be used to accelerate cell segmentation. Segmentation can also run on a CPU. Cell tracking runs on the CPU and does not require a GPU.
 
 5. **Data Preparation**
 
