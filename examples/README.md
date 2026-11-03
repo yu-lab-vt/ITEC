@@ -1,6 +1,6 @@
 ## Examples
 
-Here, we provide two examples of ITEC cell tracking, including the raw data and parameter tables. Users can directly run [demo_data1.m](demo_data1.m), [demo_data2.m](demo_data2.m), and view the results. The analysis may take several minutes.
+Here, we provide two examples of ITEC cell tracking, including the raw data and parameter tables. Each demo typically completes within one hour on a standard desktop computer. Users can directly run [demo_data1.m](demo_data1.m), [demo_data2.m](demo_data2.m), and view the results. The analysis may take several minutes.
 
 The raw **data** can be downloaded from [here](https://data.mendeley.com/datasets/tvpnf435jp/1).
 
